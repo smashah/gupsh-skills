@@ -1,5 +1,10 @@
 # Bento n8n Community Node
 
+## Point it at gupsh
+
+**Unverified against gupsh.** This upstream Bento package may hardcode Bento hosts or wire behavior. No source-reviewed host override is available here. Inspect its transport and configure `GUPSH_API_BASE_URL=https://api.gupsh.app/api/v1` only if the package supports an explicit base URL; do not assume the remaining upstream examples route to gupsh.
+
+
 Use for no-code/low-code workflows in self-hosted or cloud n8n. Prefer native node operations and n8n credential storage over custom Function node HTTP calls.
 
 ## Install And Detect

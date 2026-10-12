@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bento Account And SDK Integrations"
-  short_description: "Work safely with Bento accounts, MCP, CLI, and SDK integrations."
-  default_prompt: "Use the Bento skill to choose the right Bento tool, work safely with customer account data, prefer bulk APIs, keep credentials secure, and verify the result."

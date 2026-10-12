@@ -4,58 +4,56 @@ import path from 'node:path';
 
 const SDKS = {
   mcp: {
-    label: 'Bento MCP',
+    label: 'gupsh MCP',
     reference: 'references/mcp.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
     install: [
-      'npx -y @bentonow/bento-mcp setup',
-      'npx -y @bentonow/bento-mcp --help'
+      'npx -y @gupsh/mcp setup',
+      'npx -y @gupsh/mcp --help'
     ],
     verify: [
-      'npx -y @bentonow/bento-mcp --help',
-      'npx -y @bentonow/bento-mcp setup --print'
+      'npx -y @gupsh/mcp --help'
     ]
   },
   cli: {
-    label: 'Bento CLI',
+    label: 'gupsh CLI',
     reference: 'references/cli.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
     install: [
-      'npx @bentonow/bento-cli --help',
-      'npm install -g @bentonow/bento-cli',
-      'bun install -g @bentonow/bento-cli'
+      'npx @gupsh/cli --help',
+      'Source: https://github.com/smashah/gupsh-cli (npm release unverified)'
     ],
     verify: [
-      'npx @bentonow/bento-cli --help',
-      'bento auth status',
-      'bento stats site --json'
+      'npx @gupsh/cli --help',
+      'gupsh auth status',
+      'gupsh stats site --json'
     ]
   },
   node: {
     label: 'Bento Node SDK',
     reference: 'references/node.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['npm install @bentonow/bento-node-sdk --save', 'bun add @bentonow/bento-node-sdk'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['Install @bentonow/bento-node-sdk in the consuming app; see references/node.md for the required baseUrl'],
     verify: ['bun test', 'npm test', 'npm run build']
   },
   laravel: {
     label: 'Bento Laravel SDK',
     reference: 'references/laravel.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['composer require bentonow/bento-laravel-sdk', 'php artisan bento:install'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['See references/laravel.md for the upstream package and gupsh connector/middleware recipe'],
     verify: ['php artisan bento:test', 'php artisan bento:validate', './vendor/bin/pest']
   },
   php: {
     label: 'Bento PHP SDK',
     reference: 'references/php.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['composer require bentonow/bento-php-sdk'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['Unverified against gupsh: inspect transport before installing bentonow/bento-php-sdk'],
     verify: ['composer test', 'composer run-script test']
   },
   drupal: {
     label: 'Bento Drupal SDK',
     reference: 'references/drupal.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
     install: [
       'composer config repositories.bento-drupal-sdk vcs https://github.com/bentonow/bento-drupal-sdk',
       'composer require drupal/bento_sdk:dev-main',
@@ -66,43 +64,43 @@ const SDKS = {
   go: {
     label: 'Bento Go SDK',
     reference: 'references/go.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['go get github.com/bentonow/bento-golang-sdk'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['See references/go.md for the pinned upstream source and gupsh HTTPDoer recipe'],
     verify: ['go test ./...', 'go test -race ./...']
   },
   dotnet: {
     label: 'Bento .NET SDK',
     reference: 'references/dotnet.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['dotnet add package Bento.SDK'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['Unverified against gupsh: inspect transport before installing Bento.SDK'],
     verify: ['dotnet restore', 'dotnet build', 'dotnet test']
   },
   elixir: {
     label: 'Bento Elixir SDK',
     reference: 'references/elixir.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_USERNAME', 'BENTO_PASSWORD'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
     install: ['Add {:bento_sdk, "~> 0.1.1"} to deps in mix.exs', 'mix deps.get'],
     verify: ['mix test', 'mix format --check-formatted']
   },
   python: {
     label: 'Bento Python SDK',
     reference: 'references/python.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['pip install git+https://github.com/bentonow/bento-python-sdk.git'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['See references/python.md for the pinned upstream source and gupsh BASE_URL recipe'],
     verify: ['python -c "from bento_api import BentoAPI; print(BentoAPI.__name__)"', 'python -m pytest']
   },
   ruby: {
     label: 'Bento Ruby SDK',
     reference: 'references/ruby.md',
-    credentials: ['BENTO_SITE_UUID', 'BENTO_PUBLISHABLE_KEY', 'BENTO_SECRET_KEY'],
-    install: ['Add gem "bento-sdk", github: "bentonow/bento-ruby-sdk", branch: "master" to Gemfile', 'bundle install'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['See references/ruby.md for the upstream gem and gupsh connection recipe'],
     verify: ['bundle exec rake', 'bundle exec rspec']
   },
   n8n: {
     label: 'Bento n8n Community Node',
     reference: 'references/n8n.md',
-    credentials: ['Bento API credential in n8n: Publishable Key, Secret Key, Site UUID'],
-    install: ['cd ~/.n8n', 'npm install n8n-nodes-bento', 'n8n start'],
+    credentials: ['GUPSH_SITE_UUID', 'GUPSH_PUBLISHABLE_KEY', 'GUPSH_SECRET_KEY', 'GUPSH_API_BASE_URL'],
+    install: ['Unverified against gupsh: inspect n8n-nodes-bento transport before installing'],
     verify: ['npm list n8n-nodes-bento', 'Create Bento credential in n8n and click Test']
   }
 };
@@ -112,10 +110,10 @@ const IGNORE_DIRS = new Set(['.git', 'node_modules', 'vendor', 'dist', 'build', 
 function usage(exitCode = 0) {
   const keys = Object.keys(SDKS).join('|');
   console.log(`Usage:
-  bento-sdk.mjs list
-  bento-sdk.mjs install <${keys}>
-  bento-sdk.mjs detect [path]
-  bento-sdk.mjs doctor [path]`);
+  gupsh-sdk.mjs list
+  gupsh-sdk.mjs install <${keys}>
+  gupsh-sdk.mjs detect [path]
+  gupsh-sdk.mjs doctor [path]`);
   process.exit(exitCode);
 }
 
@@ -181,11 +179,11 @@ function scoreProject(root) {
     .join('\n');
   const scores = Object.fromEntries(Object.keys(SDKS).map((key) => [key, 0]));
 
-  if (packageJson?.name === '@bentonow/bento-cli' || packageJson?.bin?.bento) scores.cli += 10;
-  if (allText.includes('@bentonow/bento-cli')) scores.cli += 4;
+  if (packageJson?.name === '@gupsh/cli' || packageJson?.bin?.gupsh) scores.cli += 10;
+  if (allText.includes('@gupsh/cli')) scores.cli += 4;
 
-  if (packageJson?.name === '@bentonow/bento-mcp' || jsonHasPackage(packageJson, '@bentonow/bento-mcp')) scores.mcp += 10;
-  if (allText.includes('@bentonow/bento-mcp') || allText.includes('bento-mcp')) scores.mcp += 4;
+  if (packageJson?.name === '@gupsh/mcp' || jsonHasPackage(packageJson, '@gupsh/mcp')) scores.mcp += 10;
+  if (allText.includes('@gupsh/mcp') || allText.includes('gupsh-mcp')) scores.mcp += 4;
 
   if (jsonHasPackage(packageJson, '@bentonow/bento-node-sdk') || allText.includes('@bentonow/bento-node-sdk')) scores.node += 8;
   if (allText.includes('new Analytics(') && allText.includes('siteUuid')) scores.node += 3;
@@ -243,8 +241,8 @@ function printInstall(key) {
 function printDetect(root) {
   const matches = scoreProject(path.resolve(root));
   if (!matches.length) {
-    console.log('No Bento SDK detected.');
-    console.log('Run `node skills/bento/scripts/bento-sdk.mjs list` to see supported SDK keys.');
+    console.log('No gupsh-compatible SDK detected.');
+    console.log('Run `node skills/gupsh/scripts/gupsh-sdk.mjs list` to see supported SDK keys.');
     return;
   }
   for (const match of matches) {
@@ -257,7 +255,7 @@ function printDoctor(root) {
   const matches = scoreProject(target);
   console.log(`Project: ${target}`);
   if (!matches.length) {
-    console.log('No Bento SDK detected. Choose an SDK with `list`, then print install steps with `install <sdk>`.');
+    console.log('No gupsh-compatible SDK detected. Choose an SDK with `list`, then print install steps with `install <sdk>`.');
     return;
   }
   const primary = matches[0];

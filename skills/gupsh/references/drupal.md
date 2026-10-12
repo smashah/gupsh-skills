@@ -1,5 +1,10 @@
 # Bento Drupal SDK
 
+## Point it at gupsh
+
+**Unverified against gupsh.** This upstream Bento package may hardcode Bento hosts or wire behavior. No source-reviewed host override is available here. Inspect its transport and configure `GUPSH_API_BASE_URL=https://api.gupsh.app/api/v1` only if the package supports an explicit base URL; do not assume the remaining upstream examples route to gupsh.
+
+
 Use for Drupal 10 sites and custom modules that should integrate through Drupal services, admin config, cron, queues, Webform, Commerce, and Drupal mail.
 
 ## Install And Detect
@@ -20,7 +25,7 @@ Detect from project/files:
 - `composer.json` type `drupal-module` or dependency `drupal/bento_sdk`
 - `\Drupal::service('bento.sdk')`
 
-Configure in Drupal admin at `/admin/config/bento/settings`, with production secret key in `BENTO_SECRET_KEY` when possible.
+Configure in Drupal admin at `/admin/config/bento/settings`, with production secret key in `GUPSH_SECRET_KEY` when possible.
 
 ## Preferred Integration Recipes
 
