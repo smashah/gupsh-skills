@@ -1,5 +1,10 @@
 # Bento .NET SDK
 
+## Point it at gupsh
+
+**Unverified against gupsh.** This upstream Bento package may hardcode Bento hosts or wire behavior. No source-reviewed host override is available here. Inspect its transport and configure `GUPSH_API_BASE_URL=https://api.gupsh.app/api/v1` only if the package supports an explicit base URL; do not assume the remaining upstream examples route to gupsh.
+
+
 Use for ASP.NET Core and .NET services that should use dependency injection, `appsettings`, typed request records, and async services.
 
 ## Install And Detect
